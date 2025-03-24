@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PestAway - Professional Pest Control Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Add EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // Initialize EmailJS with your public key from environment variable
+        emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
+      })();
+    </script>
+    <style>
+      /* Custom styles that go beyond Tailwind */
+      .hero-section {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("https://source.unsplash.com/random/1600x900/?pest-control");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+
+      .call-button-pulse {
+        animation: pulse 2s infinite;
+      }
+
+      /* Mobile Menu Styles */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: white;
+        padding: 2rem;
+        transition: right 0.3s ease-in-out;
+        z-index: 1001;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      #mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        pointer-events: none;
+      }
+
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+        }
+      }
+
+      /* Add these animations to your existing styles */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out forwards;
+      }
+
+      /* Add a subtle hover effect to the trust indicators */
+      .bg-white.bg-opacity-10:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Add these animations to your existing styles if not already present */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Add hover effect for feature icons */
+      .bg-green-100:hover i {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+      }
+
+      /* Add hover effect for service cards */
+      .group:hover .w-16 {
+        animation: float 2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800 scroll-smooth">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <!-- Logo -->
+          <a
+            href="#"
+            class="text-2xl font-bold text-green-600 flex items-center space-x-3"
+          >
+            <img
+              src="./images/logo-1.png"
+              alt="fly away pest control"
+              class="h-12 w-auto"
+            />
+            Fly Away Pest Control</a
+          >
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-green-600 font-medium"
+              >Home</a
+            >
+            <a
+              href="#services"
+              class="text-gray-700 hover:text-green-600 font-medium"
+              >Services</a
+            >
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-green-600 font-medium"
+              >About Us</a
+            >
+            <a
+              href="#testimonials"
+              class="text-gray-700 hover:text-green-600 font-medium"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-green-600 font-medium"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Call Now Button (Desktop) -->
+          <a
+            href="tel:5551234567"
+            class="hidden md:flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition duration-300 call-button-pulse"
+          >
+            <i class="fas fa-phone-alt mr-2"></i> Call: +61 469 114 477
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden text-gray-700">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="md:hidden">
+          <div class="flex justify-between items-center mb-8">
+            <a href="#" class="text-2xl font-bold text-green-600">PestAway</a>
+            <button id="close-menu" class="text-gray-700">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <nav class="space-y-6">
+            <a
+              href="#home"
+              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              >Home</a
+            >
+            <a
+              href="#services"
+              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              >Services</a
+            >
+            <a
+              href="#about"
+              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              >About Us</a
+            >
+            <a
+              href="#testimonials"
+              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              >Contact</a
+            >
+            <a
+              href="tel:5551234567"
+              class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-md font-medium transition duration-300 mt-6"
+            >
+              <i class="fas fa-phone-alt mr-2"></i> Call: (555) 123-4567
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-section text-white py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden"
+    >
+      <!-- Animated Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <!-- Gradient Overlay -->
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/80"
+        ></div>
+
+        <!-- Animated Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+          <div
+            class="absolute inset-0"
+            style="
+              background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4l-2-2V24h-2v4l-2 2v4h6zm0-30V0h-2v4h-2v2h2v4h2V6h2V4h-2zM6 34v-4l-2-2V24H2v4l-2 2v4h6zM6 4V0H4v4H2v2h2v4h2V6h2V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            "
+          ></div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-500 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-yellow-500 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-500 rounded-full opacity-20 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+
+        <!-- Animated Pest Icons -->
+        <div class="absolute top-20 left-10 animate-bounce">
+          <i class="fas fa-bug text-green-400 text-2xl"></i>
+        </div>
+        <div
+          class="absolute bottom-20 right-10 animate-bounce"
+          style="animation-delay: 0.5s"
+        >
+          <i class="fas fa-spider text-yellow-400 text-2xl"></i>
+        </div>
+        <div
+          class="absolute top-40 right-20 animate-bounce"
+          style="animation-delay: 1s"
+        >
+          <i class="fas fa-cockroach text-green-400 text-2xl"></i>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto">
+          <!-- Trust Badges with Enhanced Animation -->
+          <div class="flex flex-wrap items-center gap-3 mb-6 animate-fade-in">
+            <div
+              class="bg-green-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transform hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+            >
+              <i class="fas fa-shield-alt mr-2 text-yellow-300"></i> Licensed &
+              Insured
+            </div>
+            <div
+              class="bg-white bg-opacity-20 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <i class="fas fa-clock mr-2 text-green-300"></i> 24/7 Emergency
+              Service
+            </div>
+            <div
+              class="bg-white bg-opacity-20 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <i class="fas fa-leaf mr-2 text-green-300"></i> Eco-Friendly
+              Solutions
+            </div>
+          </div>
+
+          <!-- Main Content with Enhanced Typography and Animation -->
+          <div class="text-center sm:text-left">
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight animate-slide-up"
+            >
+              <span class="text-green-400">Professional</span> Pest Control
+              <br class="hidden sm:block" />
+              <span class="text-yellow-300">Services</span> You Can Trust
+            </h1>
+            <p
+              class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-100 max-w-2xl mx-auto sm:mx-0 animate-fade-in"
+            >
+              Experience peace of mind with our expert pest control solutions.
+              We protect your home and business with safe, effective treatments.
+            </p>
+
+            <!-- CTA Buttons with Enhanced Animation -->
+            <div
+              class="flex flex-col sm:flex-row justify-center sm:justify-start gap-3 sm:gap-4 mb-8 sm:mb-12 animate-fade-in"
+            >
+              <a
+                href="tel:+61469114477"
+                class="group bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg inline-flex items-center justify-center transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Call Now: +61 469 114 477
+                <i
+                  class="fas fa-phone-alt ml-2 text-yellow-300 group-hover:rotate-12 transition-transform duration-300"
+                ></i>
+              </a>
+              <a
+                href="#contact"
+                class="group bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg inline-flex items-center justify-center transition duration-300 transform hover:scale-105"
+              >
+                Free Inspection
+                <i
+                  class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                ></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Trust Indicators with Enhanced Animation -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 animate-fade-in"
+          >
+            <div
+              class="bg-white bg-opacity-10 p-3 sm:p-4 rounded-lg text-center transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <div
+                class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-green-400"
+              >
+                15+
+              </div>
+              <div class="text-xs sm:text-sm">Years Experience</div>
+            </div>
+            <div
+              class="bg-white bg-opacity-10 p-3 sm:p-4 rounded-lg text-center transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <div
+                class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-yellow-300"
+              >
+                1000+
+              </div>
+              <div class="text-xs sm:text-sm">Happy Customers</div>
+            </div>
+            <div
+              class="bg-white bg-opacity-10 p-3 sm:p-4 rounded-lg text-center transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <div
+                class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-green-400"
+              >
+                24/7
+              </div>
+              <div class="text-xs sm:text-sm">Emergency Service</div>
+            </div>
+            <div
+              class="bg-white bg-opacity-10 p-3 sm:p-4 rounded-lg text-center transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
+            >
+              <div
+                class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-yellow-300"
+              >
+                100%
+              </div>
+              <div class="text-xs sm:text-sm">Satisfaction Guaranteed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section
+      id="services"
+      class="py-20 bg-gradient-to-br from-white to-green-50 relative overflow-hidden"
+    >
+      <!-- Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Section Header with Animation -->
+        <div class="text-center mb-16 animate-fade-in">
+          <div class="inline-block mb-4">
+            <span
+              class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold animate-pulse"
+            >
+              <i class="fas fa-bug-slash mr-2"></i>Our Services
+            </span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-green-600">Comprehensive</span> Pest Control
+            Solutions
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            We offer a wide range of pest control services to keep your home and
+            business pest-free.
+          </p>
+        </div>
+
+        <!-- Main Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div class="p-8">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fas fa-home text-2xl text-green-600"></i>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                >
+                  Residential Pest Control
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Keep your home pest-free with our comprehensive residential
+                  pest control services.
+                </p>
+                <ul class="space-y-4 mb-8">
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Interior and exterior treatments</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Safe for children and pets</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Preventative measures</span>
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
+                >
+                  Learn More
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div class="p-8">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fas fa-building text-2xl text-green-600"></i>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                >
+                  Commercial Pest Control
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Protect your business reputation with our discreet and
+                  effective commercial pest control solutions.
+                </p>
+                <ul class="space-y-4 mb-8">
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Customized treatment plans</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Discreet service options</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Regular maintenance programs</span>
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
+                >
+                  Learn More
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div class="p-8">
+                <div
+                  class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300"
+                >
+                  <i class="fas fa-shield-alt text-2xl text-green-600"></i>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                >
+                  Emergency Pest Response
+                </h3>
+                <p class="text-gray-600 mb-6">
+                  Quick response to urgent pest problems with our 24/7 emergency
+                  service.
+                </p>
+                <ul class="space-y-4 mb-8">
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>24/7 availability</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Rapid response time</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Immediate treatment options</span>
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
+                >
+                  Learn More
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          <!-- Service 4 -->
+          <div
+            class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div class="p-8">
+                <div class="flex items-center mb-6">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-bug text-2xl text-green-600"></i>
+                  </div>
+                  <h3
+                    class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Termite Control
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-6">
+                  Protect your property from destructive termites with our
+                  effective inspection and treatment services.
+                </p>
+                <ul class="space-y-4 mb-8">
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Thorough inspection</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Effective treatment</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Preventive measures</span>
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
+                >
+                  Learn More
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div
+            class="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+          >
+            <div class="relative overflow-hidden">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <div class="p-8">
+                <div class="flex items-center mb-6">
+                  <div
+                    class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4 transform group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <i class="fas fa-spider text-2xl text-green-600"></i>
+                  </div>
+                  <h3
+                    class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Bed Bug Treatment
+                  </h3>
+                </div>
+                <p class="text-gray-600 mb-6">
+                  Comprehensive bed bug elimination with our proven multi-step
+                  treatment process.
+                </p>
+                <ul class="space-y-4 mb-8">
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Thorough inspection</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Effective treatment</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span>Follow-up service</span>
+                  </li>
+                </ul>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
+                >
+                  Learn More
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Features -->
+        <!-- Additional Information -->
+        <div class="mt-16 text-center animate-fade-in">
+          <p class="text-gray-600 mb-6">All plans include:</p>
+          <div
+            class="flex flex-wrap justify-center gap-6 text-sm text-gray-600"
+          >
+            <span
+              class="flex items-center bg-white px-4 py-2 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+              Licensed & Insured
+            </span>
+            <span
+              class="flex items-center bg-white px-4 py-2 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-leaf text-green-600 mr-2"></i>
+              Eco-Friendly Solutions
+            </span>
+            <span
+              class="flex items-center bg-white px-4 py-2 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-clock text-green-600 mr-2"></i>
+              Same Day Service Available
+            </span>
+            <span
+              class="flex items-center bg-white px-4 py-2 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-certificate text-green-600 mr-2"></i>
+              Satisfaction Guaranteed
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section
+      id="about"
+      class="py-20 bg-gradient-to-br from-white to-green-50 relative overflow-hidden"
+    >
+      <!-- Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Section Header with Animation -->
+        <div class="text-center mb-16 animate-fade-in">
+          <div class="inline-block mb-4">
+            <span
+              class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold animate-pulse"
+            >
+              <i class="fas fa-star mr-2 text-yellow-400"></i>Why Choose Us
+            </span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-green-600">Your Trusted</span> Pest Control
+            Partner
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            With over 15 years of experience, we've built a reputation for
+            excellence in service and customer satisfaction.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- About Content -->
+          <div class="space-y-8">
+            <!-- Feature 1 -->
+            <div class="group bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-start">
+                <div
+                  class="bg-green-100 p-4 rounded-full mr-4 transform group-hover:rotate-12 transition-transform duration-300"
+                >
+                  <i
+                    class="fas fa-certificate text-green-600 text-2xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-xl mb-2 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Licensed & Certified
+                  </h3>
+                  <p class="text-gray-600">
+                    Our technicians are fully licensed, insured, and certified
+                    in the latest pest control techniques.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="group bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-start">
+                <div
+                  class="bg-green-100 p-4 rounded-full mr-4 transform group-hover:rotate-12 transition-transform duration-300"
+                >
+                  <i
+                    class="fas fa-clock text-green-600 text-2xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-xl mb-2 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Fast Response
+                  </h3>
+                  <p class="text-gray-600">
+                    We provide quick service with same-day appointments
+                    available for urgent pest issues.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="group bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-start">
+                <div
+                  class="bg-green-100 p-4 rounded-full mr-4 transform group-hover:rotate-12 transition-transform duration-300"
+                >
+                  <i
+                    class="fas fa-leaf text-green-600 text-2xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-xl mb-2 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Eco-Friendly Solutions
+                  </h3>
+                  <p class="text-gray-600">
+                    We use environmentally responsible products that are
+                    effective against pests but safe for your family and pets.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="group bg-white rounded-2xl shadow-lg p-6">
+              <div class="flex items-start">
+                <div
+                  class="bg-green-100 p-4 rounded-full mr-4 transform group-hover:rotate-12 transition-transform duration-300"
+                >
+                  <i
+                    class="fas fa-dollar-sign text-green-600 text-2xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-xl mb-2 text-gray-800 group-hover:text-green-600 transition-colors duration-300"
+                  >
+                    Competitive Pricing
+                  </h3>
+                  <p class="text-gray-600">
+                    We offer affordable rates and flexible payment options to
+                    fit your budget without compromising on quality.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div class="bg-white rounded-xl shadow-md p-4 text-center">
+                <div class="text-3xl font-bold text-green-600 mb-1">15+</div>
+                <div class="text-sm text-gray-600">Years Experience</div>
+              </div>
+              <div class="bg-white rounded-xl shadow-md p-4 text-center">
+                <div class="text-3xl font-bold text-green-600 mb-1">1000+</div>
+                <div class="text-sm text-gray-600">Happy Customers</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image Column with Enhanced Animation -->
+          <div class="relative">
+            <div
+              class="absolute inset-0 bg-green-100 rounded-2xl transform rotate-3"
+            ></div>
+            <div class="relative rounded-2xl overflow-hidden">
+              <img
+                src="./images/hero.png"
+                alt="Pest Control Technician"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Floating Elements -->
+            <div
+              class="absolute -top-4 -right-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center animate-float"
+            >
+              <i class="fas fa-bug text-green-600 text-xl"></i>
+            </div>
+            <div
+              class="absolute -bottom-4 -left-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center animate-float"
+              style="animation-delay: 1s"
+            >
+              <i class="fas fa-spider text-green-600 text-xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section
+      id="testimonials"
+      class="py-20 bg-gradient-to-br from-white to-green-50 relative overflow-hidden"
+    >
+      <!-- Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16 animate-fade-in">
+          <div class="inline-block mb-4">
+            <span
+              class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold animate-pulse"
+            >
+              <i class="fas fa-star mr-2 text-yellow-400"></i>What Our Customers
+              Say
+            </span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-green-600">Happy</span> Customers
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Join thousands of satisfied customers who trust us with their pest
+            control needs.
+          </p>
+        </div>
+
+        <!-- Testimonials Carousel -->
+        <div class="relative">
+          <div class="overflow-hidden">
+            <div
+              id="testimonials-container"
+              class="flex transition-transform duration-500 ease-in-out"
+            >
+              <!-- Testimonial 1 -->
+              <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                <div
+                  class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl group"
+                >
+                  <div class="flex text-yellow-400 mb-6">
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.1s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.2s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.3s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.4s"
+                    ></i>
+                  </div>
+                  <div class="relative mb-8">
+                    <i
+                      class="fas fa-quote-left text-4xl text-green-100 absolute -top-4 -left-4"
+                    ></i>
+                    <p class="text-gray-600 text-lg italic relative z-10">
+                      "PestAway eliminated our ant infestation quickly and
+                      professionally. The technician was knowledgeable and took
+                      the time to explain the treatment process. Highly
+                      recommend!"
+                    </p>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-16 h-16 bg-green-100 rounded-full mr-4 flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300"
+                    >
+                      <i class="fas fa-user text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg text-gray-800">
+                        Sarah Johnson
+                      </h4>
+                      <p class="text-sm text-gray-500">Residential Customer</p>
+                      <div class="flex items-center mt-2">
+                        <i
+                          class="fas fa-map-marker-alt text-green-600 mr-2"
+                        ></i>
+                        <span class="text-sm text-gray-500">Brisbane, QLD</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonial 2 -->
+              <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                <div
+                  class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl group"
+                >
+                  <div class="flex text-yellow-400 mb-6">
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.1s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.2s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.3s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.4s"
+                    ></i>
+                  </div>
+                  <div class="relative mb-8">
+                    <i
+                      class="fas fa-quote-left text-4xl text-green-100 absolute -top-4 -left-4"
+                    ></i>
+                    <p class="text-gray-600 text-lg italic relative z-10">
+                      "Great service! They came the same day I called and took
+                      care of my rodent problem completely. The follow-up was
+                      excellent, and they provided helpful tips to prevent
+                      future issues."
+                    </p>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-16 h-16 bg-green-100 rounded-full mr-4 flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300"
+                    >
+                      <i class="fas fa-user text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg text-gray-800">
+                        Michael Brown
+                      </h4>
+                      <p class="text-sm text-gray-500">Homeowner</p>
+                      <div class="flex items-center mt-2">
+                        <i
+                          class="fas fa-map-marker-alt text-green-600 mr-2"
+                        ></i>
+                        <span class="text-sm text-gray-500"
+                          >Gold Coast, QLD</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonial 3 -->
+              <div class="w-full md:w-1/3 flex-shrink-0 px-4">
+                <div
+                  class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl group"
+                >
+                  <div class="flex text-yellow-400 mb-6">
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.1s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.2s"
+                    ></i>
+                    <i
+                      class="fas fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.3s"
+                    ></i>
+                    <i
+                      class="far fa-star text-xl transform group-hover:scale-110 transition-transform duration-300"
+                      style="animation-delay: 0.4s"
+                    ></i>
+                  </div>
+                  <div class="relative mb-8">
+                    <i
+                      class="fas fa-quote-left text-4xl text-green-100 absolute -top-4 -left-4"
+                    ></i>
+                    <p class="text-gray-600 text-lg italic relative z-10">
+                      "As a restaurant owner, pest control is crucial. PestAway
+                      provides our business with regular maintenance that keeps
+                      pests away discreetly and effectively. Our customers never
+                      notice them, but we notice the results!"
+                    </p>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-16 h-16 bg-green-100 rounded-full mr-4 flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300"
+                    >
+                      <i class="fas fa-user text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-lg text-gray-800">
+                        Jennifer Lee
+                      </h4>
+                      <p class="text-sm text-gray-500">Business Owner</p>
+                      <div class="flex items-center mt-2">
+                        <i
+                          class="fas fa-map-marker-alt text-green-600 mr-2"
+                        ></i>
+                        <span class="text-sm text-gray-500"
+                          >Sunshine Coast, QLD</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <button
+            id="prev-testimonial"
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-4 shadow-lg hover:bg-green-50 transition duration-300 hover:scale-110"
+          >
+            <i class="fas fa-chevron-left text-green-600 text-xl"></i>
+          </button>
+          <button
+            id="next-testimonial"
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-4 shadow-lg hover:bg-green-50 transition duration-300 hover:scale-110"
+          >
+            <i class="fas fa-chevron-right text-green-600 text-xl"></i>
+          </button>
+
+          <!-- Dots Navigation -->
+          <div class="flex justify-center mt-12 space-x-3">
+            <button
+              class="w-4 h-4 rounded-full bg-green-600 testimonial-dot active transform hover:scale-125 transition-transform duration-300"
+              data-index="0"
+            ></button>
+            <button
+              class="w-4 h-4 rounded-full bg-gray-300 testimonial-dot transform hover:scale-125 transition-transform duration-300"
+              data-index="1"
+            ></button>
+            <button
+              class="w-4 h-4 rounded-full bg-gray-300 testimonial-dot transform hover:scale-125 transition-transform duration-300"
+              data-index="2"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section
+      class="py-16 bg-gradient-to-br from-green-600 to-green-700 text-white relative overflow-hidden"
+    >
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div
+          class="absolute inset-0"
+          style="
+            background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4l-2-2V24h-2v4l-2 2v4h6zm0-30V0h-2v4h-2v2h2v4h2V6h2V4h-2zM6 34v-4l-2-2V24H2v4l-2 2v4h6zM6 4V0H4v4H2v2h2v4h2V6h2V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+          "
+        ></div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-white rounded-full opacity-10 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-white rounded-full opacity-10 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-white rounded-full opacity-10 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <!-- Animated Badge -->
+          <div class="inline-block mb-6 animate-bounce">
+            <span
+              class="bg-white text-green-600 px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+            >
+              <i class="fas fa-star mr-2 text-yellow-400"></i>Limited Time Offer
+            </span>
+          </div>
+
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Ready to <span class="text-yellow-300">Banish</span> Those Pests?
+          </h2>
+
+          <p class="text-xl md:text-2xl mb-8 text-gray-100 max-w-2xl mx-auto">
+            Get a
+            <span class="text-yellow-300 font-bold">FREE Inspection</span> and
+            take the first step towards a pest-free environment.
+          </p>
+
+          <!-- Interactive CTA Buttons -->
+          <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+            <a
+              href="tel:+61469114477"
+              class="group bg-white text-green-600 hover:bg-yellow-300 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <i
+                class="fas fa-phone-alt mr-3 text-green-600 group-hover:text-green-700"
+              ></i>
+              Call Now: +61 469 114 477
+            </a>
+            <a
+              href="#contact"
+              class="group bg-transparent border-2 border-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <i class="fas fa-envelope mr-3"></i>
+              Get Free Quote
+            </a>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+            <div class="bg-white bg-opacity-10 p-3 rounded-lg backdrop-blur-sm">
+              <i class="fas fa-shield-alt text-yellow-300 mb-2"></i>
+              <p>Licensed & Insured</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-3 rounded-lg backdrop-blur-sm">
+              <i class="fas fa-clock text-yellow-300 mb-2"></i>
+              <p>24/7 Service</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-3 rounded-lg backdrop-blur-sm">
+              <i class="fas fa-check-circle text-yellow-300 mb-2"></i>
+              <p>Guaranteed Results</p>
+            </div>
+            <div class="bg-white bg-opacity-10 p-3 rounded-lg backdrop-blur-sm">
+              <i class="fas fa-dollar-sign text-yellow-300 mb-2"></i>
+              <p>Best Price Guarantee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section
+      id="faq"
+      class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
+    >
+      <!-- Background Pattern -->
+      <!-- <div class="absolute inset-0 opacity-5">
+        <div
+          class="absolute inset-0"
+          style="
+            background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4l-2-2V24h-2v4l-2 2v4h6zm0-30V0h-2v4h-2v2h2v4h2V6h2V4h-2zM6 34v-4l-2-2V24H2v4l-2 2v4h6zM6 4V0H4v4H2v2h2v4h2V6h2V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+          "
+        ></div>
+      </div> -->
+
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-green-600">Frequently Asked</span> Questions
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Find answers to common questions about our pest control services.
+            Can't find what you're looking for?
+            <a
+              href="#contact"
+              class="text-green-600 hover:text-green-700 font-medium"
+              >Contact us</a
+            >
+            for more information.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+          <!-- FAQ Item 1 -->
+          <div
+            class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <button
+              class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+            >
+              <span
+                class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors duration-200"
+              >
+                How often should I schedule pest control services?
+              </span>
+              <i
+                class="fas fa-chevron-down text-green-600 transform transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-content hidden px-6 py-4 bg-gray-50">
+              <p class="text-gray-600">
+                The frequency depends on your location and specific needs. For
+                most homes, we recommend quarterly treatments (every 3 months)
+                to maintain effective pest control. However, we can customize a
+                schedule based on your property's requirements and local pest
+                pressures.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div
+            class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <button
+              class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+            >
+              <span
+                class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors duration-200"
+              >
+                Are your pest control products safe for children and pets?
+              </span>
+              <i
+                class="fas fa-chevron-down text-green-600 transform transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-content hidden px-6 py-4 bg-gray-50">
+              <p class="text-gray-600">
+                Yes, we use EPA-approved products that are safe for children and
+                pets when applied according to label directions. Our technicians
+                are trained in proper application methods and will provide
+                specific instructions for any necessary precautions.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div
+            class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <button
+              class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+            >
+              <span
+                class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors duration-200"
+              >
+                What should I do to prepare for a pest control treatment?
+              </span>
+              <i
+                class="fas fa-chevron-down text-green-600 transform transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-content hidden px-6 py-4 bg-gray-50">
+              <p class="text-gray-600">
+                Before treatment, please ensure all food items are properly
+                stored, remove any clutter from areas to be treated, and secure
+                pets in a separate area. Our technician will provide specific
+                preparation instructions based on the type of treatment being
+                performed.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div
+            class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <button
+              class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+            >
+              <span
+                class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors duration-200"
+              >
+                Do you offer emergency pest control services?
+              </span>
+              <i
+                class="fas fa-chevron-down text-green-600 transform transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-content hidden px-6 py-4 bg-gray-50">
+              <p class="text-gray-600">
+                Yes, we provide 24/7 emergency pest control services for urgent
+                situations. Our team is always ready to respond to emergency
+                calls, especially for situations involving dangerous pests or
+                severe infestations that require immediate attention.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div
+            class="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <button
+              class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+            >
+              <span
+                class="font-semibold text-lg text-gray-800 group-hover:text-green-600 transition-colors duration-200"
+              >
+                What types of pests do you treat?
+              </span>
+              <i
+                class="fas fa-chevron-down text-green-600 transform transition-transform duration-300"
+              ></i>
+            </button>
+            <div class="faq-content hidden px-6 py-4 bg-gray-50">
+              <p class="text-gray-600">
+                We treat a wide range of pests including ants, cockroaches,
+                spiders, rodents, termites, bed bugs, and more. Our
+                comprehensive pest control solutions are tailored to address
+                specific pest problems and prevent future infestations.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Help Section -->
+        <!-- <div class="mt-12 text-center">
+          <div class="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
+            <div class="flex items-center justify-center mb-4">
+              <div
+                class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center"
+              >
+                <i class="fas fa-question-circle text-3xl text-green-600"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Still Have Questions?</h3>
+            <p class="text-gray-600 mb-6">
+              Our team is here to help! Contact us for personalized assistance
+              and expert advice.
+            </p>
+            <a
+              href="#contact"
+              class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              <i class="fas fa-envelope mr-2"></i>
+              Get in Touch
+            </a>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-16 bg-gradient-to-br from-white to-green-50 relative overflow-hidden"
+    >
+      <!-- Animated Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-100 rounded-full opacity-20 animate-float"
+          style="animation-delay: 2s"
+        ></div>
+        <!-- Add playful pest icons -->
+        <div class="absolute top-20 left-10 animate-bounce">
+          <i class="fas fa-bug text-green-400 text-2xl"></i>
+        </div>
+        <div
+          class="absolute bottom-20 right-10 animate-bounce"
+          style="animation-delay: 0.5s"
+        >
+          <i class="fas fa-spider text-green-400 text-2xl"></i>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-4 relative z-10">
+        <!-- Section Header with Animation -->
+        <div class="text-center mb-12 animate-fade-in">
+          <div class="inline-block mb-4">
+            <span
+              class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold animate-pulse"
+            >
+              <i class="fas fa-envelope-open-text mr-2"></i>Get in Touch
+            </span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="text-green-600">Let's Solve</span> Your Pest Problem
+          </h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+            Have a pest problem? Let's solve it together! Contact us for a free
+            inspection and quote.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Contact Information -->
+          <div class="space-y-8">
+            <!-- Contact Cards with Enhanced Animations -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Phone Card -->
+              <div
+                class="bg-white rounded-xl shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg group cursor-pointer"
+              >
+                <div
+                  class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300 group-hover:rotate-12"
+                >
+                  <i
+                    class="fas fa-phone-alt text-green-600 text-xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <h4 class="font-semibold text-lg mb-2">Call Us</h4>
+                <a
+                  href="tel:+61469114477"
+                  class="text-gray-600 hover:text-green-600 transition-colors duration-300 flex items-center group"
+                >
+                  <span>+61 469 114 477</span>
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+
+              <!-- Email Card -->
+              <div
+                class="bg-white rounded-xl shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg group cursor-pointer"
+              >
+                <div
+                  class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300 group-hover:rotate-12"
+                >
+                  <i
+                    class="fas fa-envelope text-green-600 text-xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <h4 class="font-semibold text-lg mb-2">Email Us</h4>
+                <a
+                  href="mailto:flyawaypestcontrol@gmail.com"
+                  class="text-gray-600 hover:text-green-600 transition-colors duration-300 flex items-center group"
+                >
+                  <span>flyawaypestcontrol@gmail.com</span>
+                  <i
+                    class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                  ></i>
+                </a>
+              </div>
+
+              <!-- Location Card -->
+              <div
+                class="bg-white rounded-xl shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg group"
+              >
+                <div
+                  class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300 group-hover:rotate-12"
+                >
+                  <i
+                    class="fas fa-map-marker-alt text-green-600 text-xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <h4 class="font-semibold text-lg mb-2">Visit Us</h4>
+                <p class="text-gray-600">
+                  140-142 Eagleby Road<br />
+                  Eagleby, QLD, Australia
+                </p>
+              </div>
+
+              <!-- Hours Card -->
+              <div
+                class="bg-white rounded-xl shadow-md p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg group"
+              >
+                <div
+                  class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors duration-300 group-hover:rotate-12"
+                >
+                  <i
+                    class="fas fa-clock text-green-600 text-xl group-hover:scale-110 transition-transform duration-300"
+                  ></i>
+                </div>
+                <h4 class="font-semibold text-lg mb-2">Business Hours</h4>
+                <p class="text-gray-600">
+                  Mon-Fri: 8am - 6pm<br />
+                  Sat: 9am - 4pm<br />
+                  Sun: Closed
+                </p>
+                <p class="text-green-600 font-medium mt-2 flex items-center">
+                  <i class="fas fa-bolt mr-2"></i>
+                  24/7 Emergency Available
+                </p>
+              </div>
+            </div>
+
+            <!-- Social Media Links with Enhanced Animations -->
+            <!-- <div class="bg-white rounded-xl shadow-lg p-6">
+              <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+              <div class="flex space-x-4">
+                <a
+                  href="https://www.facebook.com/people/Fly-Away-Pest-Control/61566863571825/"
+                  class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                  target="_blank"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:scale-110 hover:rotate-12"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- Contact Form with Enhanced Styling -->
+          <div
+            class="bg-white rounded-xl shadow-md p-8 transform hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mr-4"
+              >
+                <i class="fas fa-paper-plane text-green-600 text-xl"></i>
+              </div>
+              <h3 class="text-2xl font-semibold">Send Us a Message</h3>
+            </div>
+            <form id="contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="form-group">
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Your Name *</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Email *</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="form-group">
+                  <label
+                    for="phone"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Phone Number *</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    for="service"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Service Type</label
+                  >
+                  <select
+                    id="service"
+                    name="service"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="residential">
+                      Residential Pest Control
+                    </option>
+                    <option value="commercial">Commercial Pest Control</option>
+                    <option value="termite">Termite Control</option>
+                    <option value="rodent">Rodent Control</option>
+                    <option value="bed-bug">Bed Bug Treatment</option>
+                    <option value="emergency">Emergency Service</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Your Message *</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400 resize-none"
+                  placeholder="Please describe your pest problem..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-lg font-medium text-lg transition duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center group"
+              >
+                <span>Send Message</span>
+                <i
+                  class="fas fa-paper-plane ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+                ></i>
+              </button>
+            </form>
+
+            <div
+              id="form-success"
+              class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg animate-fade-in"
+            >
+              <div class="flex items-center">
+                <i class="fas fa-check-circle text-2xl mr-3"></i>
+                <p>
+                  Thank you for your message! We'll get back to you as soon as
+                  possible.
+                </p>
+              </div>
+            </div>
+
+            <div
+              id="form-error"
+              class="hidden mt-4 p-4 bg-red-100 text-red-700 rounded-lg animate-fade-in"
+            >
+              <div class="flex items-center">
+                <i class="fas fa-exclamation-circle text-2xl mr-3"></i>
+                <p>
+                  Sorry, there was an error sending your message. Please try
+                  again later.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <img
+                src="images/logo-1.png"
+                alt="Fly Away Pest Control Logo"
+                class="h-12 w-auto"
+              />
+              <h3 class="text-xl font-bold">Fly Away Pest Control</h3>
+            </div>
+            <p class="mb-4 text-gray-400">
+              Your Home, Our Shield. Zero Pests Guaranteed.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.facebook.com/people/Fly-Away-Pest-Control/61566863571825/"
+                class="text-gray-400 hover:text-white transition duration-300"
+                target="_blank"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#testimonials"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Testimonials</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Residential Pest Control</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Commercial Pest Control</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Termite Control</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Bed Bug Treatment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Emergency Services</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-2"></i>
+                <span>+61 469 114 477</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-2"></i>
+                <span>flyawaypestcontrol@gmail.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span
+                  >140-142 Eagleby Road , Eagleby, QLD, Australia,
+                  Queensland</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-2"></i>
+                <span>Mon-Fri: 8am-6pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div
+          class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400"
+        >
+          <p>
+            &copy; <span id="currentYear"></span> Fly Away Pest Control. All
+            rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+      document.getElementById("currentYear").innerHTML =
+        new Date().getFullYear();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const closeMenuButton = document.getElementById("close-menu");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuOverlay = document.getElementById(
+          "mobile-menu-overlay"
+        );
+        const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+
+        function toggleMobileMenu() {
+          mobileMenu.classList.toggle("active");
+          mobileMenuOverlay.classList.toggle("active");
+          document.body.style.overflow = mobileMenu.classList.contains("active")
+            ? "hidden"
+            : "";
+        }
+
+        mobileMenuButton.addEventListener("click", toggleMobileMenu);
+        closeMenuButton.addEventListener("click", toggleMobileMenu);
+        mobileMenuOverlay.addEventListener("click", toggleMobileMenu);
+
+        // Close menu when clicking on a link
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            mobileMenuOverlay.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        });
+
+        // Testimonials Carousel Code
+        const testimonialsContainer = document.getElementById(
+          "testimonials-container"
+        );
+        const prevButton = document.getElementById("prev-testimonial");
+        const nextButton = document.getElementById("next-testimonial");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function updateCarousel() {
+          const offset = -currentIndex * 100;
+          testimonialsContainer.style.transform = `translateX(${offset}%)`;
+
+          // Update dots
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("bg-green-600", index === currentIndex);
+            dot.classList.toggle("bg-gray-300", index !== currentIndex);
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % 3;
+          updateCarousel();
+        }
+
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + 3) % 3;
+          updateCarousel();
+        }
+
+        function startAutoSlide() {
+          autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoSlide() {
+          clearInterval(autoSlideInterval);
+        }
+
+        // Event Listeners
+        prevButton.addEventListener("click", () => {
+          prevSlide();
+          stopAutoSlide();
+          startAutoSlide();
+        });
+
+        nextButton.addEventListener("click", () => {
+          nextSlide();
+          stopAutoSlide();
+          startAutoSlide();
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            currentIndex = index;
+            updateCarousel();
+            stopAutoSlide();
+            startAutoSlide();
+          });
+        });
+
+        // Start auto-sliding
+        startAutoSlide();
+
+        // Pause auto-sliding on hover
+        testimonialsContainer.addEventListener("mouseenter", stopAutoSlide);
+        testimonialsContainer.addEventListener("mouseleave", startAutoSlide);
+
+        // FAQ Accordion Code
+        const faqButtons = document.querySelectorAll(".faq-button");
+
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector("i");
+
+            // Close all other FAQ items
+            document.querySelectorAll(".faq-content").forEach((item) => {
+              if (item !== content) {
+                item.classList.add("hidden");
+              }
+            });
+
+            // Toggle current FAQ item
+            content.classList.toggle("hidden");
+
+            // Rotate icon
+            icon.style.transform = content.classList.contains("hidden")
+              ? "rotate(0deg)"
+              : "rotate(180deg)";
+          });
+        });
+
+        // Contact Form Handling with EmailJS
+        const contactForm = document.getElementById("contact-form");
+        const formSuccess = document.getElementById("form-success");
+        const formError = document.getElementById("form-error");
+
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          const submitButton = contactForm.querySelector(
+            'button[type="submit"]'
+          );
+          const originalButtonText = submitButton.innerHTML;
+          submitButton.innerHTML =
+            '<span>Sending...</span><i class="fas fa-spinner fa-spin ml-2"></i>';
+          submitButton.disabled = true;
+
+          // Get form data
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            service: document.getElementById("service").value,
+            message: document.getElementById("message").value,
+          };
+
+          // Send email using EmailJS
+          emailjs
+            .send(
+              process.env.EMAILJS_SERVICE_ID,
+              process.env.EMAILJS_TEMPLATE_ID,
+              formData
+            )
+            .then(function () {
+              // Show success message
+              formSuccess.classList.remove("hidden");
+              formError.classList.add("hidden");
+              contactForm.reset();
+            })
+            .catch(function (error) {
+              // Show error message
+              formError.classList.remove("hidden");
+              formSuccess.classList.add("hidden");
+              console.error("EmailJS Error:", error);
+            })
+            .finally(function () {
+              // Reset button state
+              submitButton.innerHTML = originalButtonText;
+              submitButton.disabled = false;
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
