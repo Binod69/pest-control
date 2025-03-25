@@ -3,23 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PestAway - Professional Pest Control Services</title>
+    <title>
+      Fly Away Pest Control Qld - Professional Pest Control Services
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Add EmailJS SDK -->
+
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
-    <script type="text/javascript">
-      (function () {
-        // Initialize EmailJS with your public key from environment variable
-        emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
-      })();
-    </script>
+
     <style>
       /* Custom styles that go beyond Tailwind */
       .hero-section {
@@ -41,42 +38,27 @@
       }
 
       /* Mobile Menu Styles */
+      .mobile-menu-closed {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      .mobile-menu-open {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
       #mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background-color: white;
-        padding: 2rem;
-        transition: right 0.3s ease-in-out;
-        z-index: 1001;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-      }
-
-      #mobile-menu.active {
-        right: 0;
-      }
-
-      .mobile-menu-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        pointer-events: none;
-      }
-
-      .mobile-menu-overlay.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        background-color: white;
+        z-index: 50;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        overflow-y: auto;
+        will-change: transform, opacity;
       }
 
       @keyframes pulse {
@@ -172,7 +154,7 @@
               alt="fly away pest control"
               class="h-12 w-auto"
             />
-            Fly Away Pest Control</a
+            Fly Away Pest Control Qld</a
           >
 
           <!-- Desktop Navigation -->
@@ -209,7 +191,7 @@
             href="tel:5551234567"
             class="hidden md:flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition duration-300 call-button-pulse"
           >
-            <i class="fas fa-phone-alt mr-2"></i> Call: +61 469 114 477
+            <i class="fas fa-phone-alt mr-2"></i> Call: 0469 114 477
           </a>
 
           <!-- Mobile Menu Button -->
@@ -221,7 +203,9 @@
         <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="md:hidden">
           <div class="flex justify-between items-center mb-8">
-            <a href="#" class="text-2xl font-bold text-green-600">PestAway</a>
+            <a href="#" class="text-xl font-bold text-green-600"
+              >Fly Away Pest Control Qld</a
+            >
             <button id="close-menu" class="text-gray-700">
               <i class="fas fa-times text-2xl"></i>
             </button>
@@ -229,7 +213,7 @@
           <nav class="space-y-6">
             <a
               href="#home"
-              class="block text-gray-700 hover:text-green-600 font-medium text-lg"
+              class="text-gray-700 hover:text-green-600 font-medium"
               >Home</a
             >
             <a
@@ -364,12 +348,12 @@
                 href="tel:+61469114477"
                 class="group bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg inline-flex items-center justify-center transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Call Now: +61 469 114 477
+                Call Now: 0469 114 477
                 <i
                   class="fas fa-phone-alt ml-2 text-yellow-300 group-hover:rotate-12 transition-transform duration-300"
                 ></i>
               </a>
-              <a
+              <!-- <a
                 href="#contact"
                 class="group bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-base sm:text-lg inline-flex items-center justify-center transition duration-300 transform hover:scale-105"
               >
@@ -377,7 +361,7 @@
                 <i
                   class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"
                 ></i>
-              </a>
+              </a> -->
             </div>
           </div>
 
@@ -391,9 +375,11 @@
               <div
                 class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 text-green-400"
               >
-                15+
+                Australian
               </div>
-              <div class="text-xs sm:text-sm">Years Experience</div>
+              <div class="text-xs sm:text-sm">
+                Family Owned & Operated Business
+              </div>
             </div>
             <div
               class="bg-white bg-opacity-10 p-3 sm:p-4 rounded-lg text-center transform hover:scale-105 transition-transform duration-300 backdrop-blur-sm"
@@ -515,15 +501,6 @@
                     <span>Preventative measures</span>
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
-                >
-                  Learn More
-                  <i
-                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
-                  ></i>
-                </a>
               </div>
             </div>
           </div>
@@ -571,15 +548,6 @@
                     <span>Regular maintenance programs</span>
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
-                >
-                  Learn More
-                  <i
-                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
-                  ></i>
-                </a>
               </div>
             </div>
           </div>
@@ -627,15 +595,6 @@
                     <span>Immediate treatment options</span>
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
-                >
-                  Learn More
-                  <i
-                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
-                  ></i>
-                </a>
               </div>
             </div>
           </div>
@@ -673,30 +632,37 @@
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Thorough inspection</span>
+                    <span>Termite Prevention & Eradication </span>
                   </li>
                   <li class="flex items-center group/item">
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Effective treatment</span>
+                    <span>Australian Made Products</span>
                   </li>
                   <li class="flex items-center group/item">
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Preventive measures</span>
+                    <span>Baiting & Monitoring Systems Chemical Barriers</span>
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span
+                      >Written Report & Proposal For Termite Management</span
+                    >
+                  </li>
+                  <li class="flex items-center group/item">
+                    <i
+                      class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
+                    ></i>
+                    <span
+                      >Latest Technology & Equipment To Detect Termites</span
+                    >
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
-                >
-                  Learn More
-                  <i
-                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
-                  ></i>
-                </a>
               </div>
             </div>
           </div>
@@ -719,11 +685,11 @@
                   <h3
                     class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300"
                   >
-                    Bed Bug Treatment
+                    Rodent Control
                   </h3>
                 </div>
                 <p class="text-gray-600 mb-6">
-                  Comprehensive bed bug elimination with our proven multi-step
+                  Comprehensive rodent control with our proven multi-step
                   treatment process.
                 </p>
                 <ul class="space-y-4 mb-8">
@@ -731,30 +697,21 @@
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Thorough inspection</span>
+                    <span>All Year Protection</span>
                   </li>
                   <li class="flex items-center group/item">
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Effective treatment</span>
+                    <span>Safe & Secure Rodent Stations</span>
                   </li>
                   <li class="flex items-center group/item">
                     <i
                       class="fas fa-check text-green-600 mr-3 transform group-hover/item:scale-110 transition-transform duration-300"
                     ></i>
-                    <span>Follow-up service</span>
+                    <span>Humane & Pests Friendly</span>
                   </li>
                 </ul>
-                <a
-                  href="#contact"
-                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group/link"
-                >
-                  Learn More
-                  <i
-                    class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"
-                  ></i>
-                </a>
               </div>
             </div>
           </div>
@@ -938,8 +895,10 @@
             <!-- Stats Section -->
             <div class="grid grid-cols-2 gap-4 mt-8">
               <div class="bg-white rounded-xl shadow-md p-4 text-center">
-                <div class="text-3xl font-bold text-green-600 mb-1">15+</div>
-                <div class="text-sm text-gray-600">Years Experience</div>
+                <div class="text-3xl font-bold text-green-600 mb-1">
+                  Australian
+                </div>
+                <div class="text-sm text-gray-600">Family Owned Business</div>
               </div>
               <div class="bg-white rounded-xl shadow-md p-4 text-center">
                 <div class="text-3xl font-bold text-green-600 mb-1">1000+</div>
@@ -1012,7 +971,7 @@
             <span class="text-green-600">Happy</span> Customers
           </h2>
           <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust us with their pest
+            Join hundreds of satisfied customers who trust us with their pest
             control needs.
           </p>
         </div>
@@ -1299,7 +1258,7 @@
               <i
                 class="fas fa-phone-alt mr-3 text-green-600 group-hover:text-green-700"
               ></i>
-              Call Now: +61 469 114 477
+              Call Now: 0469 114 477
             </a>
             <a
               href="#contact"
@@ -1396,7 +1355,7 @@
             <div class="faq-content hidden px-6 py-4 bg-gray-50">
               <p class="text-gray-600">
                 The frequency depends on your location and specific needs. For
-                most homes, we recommend quarterly treatments (every 3 months)
+                most homes, we recommend semi-annual treatments (every 6 months)
                 to maintain effective pest control. However, we can customize a
                 schedule based on your property's requirements and local pest
                 pressures.
@@ -1422,10 +1381,8 @@
             </button>
             <div class="faq-content hidden px-6 py-4 bg-gray-50">
               <p class="text-gray-600">
-                Yes, we use EPA-approved products that are safe for children and
-                pets when applied according to label directions. Our technicians
-                are trained in proper application methods and will provide
-                specific instructions for any necessary precautions.
+                Yes, we only use eco-friendly products and solutions human and
+                pest safe products.We use non-toxic chemicals.
               </p>
             </div>
           </div>
@@ -1607,7 +1564,7 @@
                   href="tel:+61469114477"
                   class="text-gray-600 hover:text-green-600 transition-colors duration-300 flex items-center group"
                 >
-                  <span>+61 469 114 477</span>
+                  <span>0469 114 477</span>
                   <i
                     class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
                   ></i>
@@ -1667,11 +1624,7 @@
                   ></i>
                 </div>
                 <h4 class="font-semibold text-lg mb-2">Business Hours</h4>
-                <p class="text-gray-600">
-                  Mon-Fri: 8am - 6pm<br />
-                  Sat: 9am - 4pm<br />
-                  Sun: Closed
-                </p>
+                <p class="text-gray-600">Everyday: 7am - 7pm<br /></p>
                 <p class="text-green-600 font-medium mt-2 flex items-center">
                   <i class="fas fa-bolt mr-2"></i>
                   24/7 Emergency Available
@@ -1732,7 +1685,7 @@
                     name="name"
                     required
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                 </div>
                 <div class="form-group">
@@ -1765,7 +1718,7 @@
                     name="phone"
                     required
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition duration-200 hover:border-green-400"
-                    placeholder="(555) 123-4567"
+                    placeholder="Your Number"
                   />
                 </div>
                 <div class="form-group">
@@ -1783,12 +1736,13 @@
                     <option value="residential">
                       Residential Pest Control
                     </option>
-                    <option value="commercial">Commercial Pest Control</option>
-                    <option value="termite">Termite Control</option>
-                    <option value="rodent">Rodent Control</option>
-                    <option value="bed-bug">Bed Bug Treatment</option>
-                    <option value="emergency">Emergency Service</option>
-                    <option value="other">Other</option>
+                    <option value="commercial pest control">
+                      Commercial Pest Control
+                    </option>
+                    <option value="termite control">Termite Control</option>
+                    <option value="rodent control">Rodent Control</option>
+                    <option value="emergency service">Emergency Service</option>
+                    <option value="other service">Other</option>
                   </select>
                 </div>
               </div>
@@ -1862,7 +1816,7 @@
                 alt="Fly Away Pest Control Logo"
                 class="h-12 w-auto"
               />
-              <h3 class="text-xl font-bold">Fly Away Pest Control</h3>
+              <h3 class="text-xl font-bold">Fly Away Pest Control Qld</h3>
             </div>
             <p class="mb-4 text-gray-400">
               Your Home, Our Shield. Zero Pests Guaranteed.
@@ -1980,7 +1934,7 @@
             <ul class="space-y-2 text-gray-400">
               <li class="flex items-center">
                 <i class="fas fa-phone-alt mr-2"></i>
-                <span>+61 469 114 477</span>
+                <span>0469 114 477</span>
               </li>
               <li class="flex items-center">
                 <i class="fas fa-envelope mr-2"></i>
@@ -1995,7 +1949,7 @@
               </li>
               <li class="flex items-center">
                 <i class="fas fa-clock mr-2"></i>
-                <span>Mon-Fri: 8am-6pm</span>
+                <span>Everyday: 7am-7pm</span>
               </li>
             </ul>
           </div>
@@ -2006,193 +1960,23 @@
           class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400"
         >
           <p>
-            &copy; <span id="currentYear"></span> Fly Away Pest Control. All
+            &copy; <span id="currentYear"></span> Fly Away Pest Control Qld. All
             rights reserved.
           </p>
         </div>
       </div>
     </footer>
 
-    <!-- Mobile Menu JavaScript -->
+    <!-- Add EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <script>
-      document.getElementById("currentYear").innerHTML =
-        new Date().getFullYear();
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const closeMenuButton = document.getElementById("close-menu");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const mobileMenuOverlay = document.getElementById(
-          "mobile-menu-overlay"
-        );
-        const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
-
-        function toggleMobileMenu() {
-          mobileMenu.classList.toggle("active");
-          mobileMenuOverlay.classList.toggle("active");
-          document.body.style.overflow = mobileMenu.classList.contains("active")
-            ? "hidden"
-            : "";
-        }
-
-        mobileMenuButton.addEventListener("click", toggleMobileMenu);
-        closeMenuButton.addEventListener("click", toggleMobileMenu);
-        mobileMenuOverlay.addEventListener("click", toggleMobileMenu);
-
-        // Close menu when clicking on a link
-        mobileMenuLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
-            mobileMenuOverlay.classList.remove("active");
-            document.body.style.overflow = "";
-          });
-        });
-
-        // Testimonials Carousel Code
-        const testimonialsContainer = document.getElementById(
-          "testimonials-container"
-        );
-        const prevButton = document.getElementById("prev-testimonial");
-        const nextButton = document.getElementById("next-testimonial");
-        const dots = document.querySelectorAll(".testimonial-dot");
-        let currentIndex = 0;
-        let autoSlideInterval;
-
-        function updateCarousel() {
-          const offset = -currentIndex * 100;
-          testimonialsContainer.style.transform = `translateX(${offset}%)`;
-
-          // Update dots
-          dots.forEach((dot, index) => {
-            dot.classList.toggle("bg-green-600", index === currentIndex);
-            dot.classList.toggle("bg-gray-300", index !== currentIndex);
-          });
-        }
-
-        function nextSlide() {
-          currentIndex = (currentIndex + 1) % 3;
-          updateCarousel();
-        }
-
-        function prevSlide() {
-          currentIndex = (currentIndex - 1 + 3) % 3;
-          updateCarousel();
-        }
-
-        function startAutoSlide() {
-          autoSlideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function stopAutoSlide() {
-          clearInterval(autoSlideInterval);
-        }
-
-        // Event Listeners
-        prevButton.addEventListener("click", () => {
-          prevSlide();
-          stopAutoSlide();
-          startAutoSlide();
-        });
-
-        nextButton.addEventListener("click", () => {
-          nextSlide();
-          stopAutoSlide();
-          startAutoSlide();
-        });
-
-        dots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            currentIndex = index;
-            updateCarousel();
-            stopAutoSlide();
-            startAutoSlide();
-          });
-        });
-
-        // Start auto-sliding
-        startAutoSlide();
-
-        // Pause auto-sliding on hover
-        testimonialsContainer.addEventListener("mouseenter", stopAutoSlide);
-        testimonialsContainer.addEventListener("mouseleave", startAutoSlide);
-
-        // FAQ Accordion Code
-        const faqButtons = document.querySelectorAll(".faq-button");
-
-        faqButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector("i");
-
-            // Close all other FAQ items
-            document.querySelectorAll(".faq-content").forEach((item) => {
-              if (item !== content) {
-                item.classList.add("hidden");
-              }
-            });
-
-            // Toggle current FAQ item
-            content.classList.toggle("hidden");
-
-            // Rotate icon
-            icon.style.transform = content.classList.contains("hidden")
-              ? "rotate(0deg)"
-              : "rotate(180deg)";
-          });
-        });
-
-        // Contact Form Handling with EmailJS
-        const contactForm = document.getElementById("contact-form");
-        const formSuccess = document.getElementById("form-success");
-        const formError = document.getElementById("form-error");
-
-        contactForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Show loading state
-          const submitButton = contactForm.querySelector(
-            'button[type="submit"]'
-          );
-          const originalButtonText = submitButton.innerHTML;
-          submitButton.innerHTML =
-            '<span>Sending...</span><i class="fas fa-spinner fa-spin ml-2"></i>';
-          submitButton.disabled = true;
-
-          // Get form data
-          const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-            service: document.getElementById("service").value,
-            message: document.getElementById("message").value,
-          };
-
-          // Send email using EmailJS
-          emailjs
-            .send(
-              process.env.EMAILJS_SERVICE_ID,
-              process.env.EMAILJS_TEMPLATE_ID,
-              formData
-            )
-            .then(function () {
-              // Show success message
-              formSuccess.classList.remove("hidden");
-              formError.classList.add("hidden");
-              contactForm.reset();
-            })
-            .catch(function (error) {
-              // Show error message
-              formError.classList.remove("hidden");
-              formSuccess.classList.add("hidden");
-              console.error("EmailJS Error:", error);
-            })
-            .finally(function () {
-              // Reset button state
-              submitButton.innerHTML = originalButtonText;
-              submitButton.disabled = false;
-            });
-        });
-      });
+      (function () {
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        emailjs.init("AGqW8wIcF9vAs38DX");
+      })();
     </script>
+
+    <script src="./index.js"></script>
   </body>
 </html>
