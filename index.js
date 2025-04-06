@@ -99,12 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function nextSlide() {
-    currentIndex = (currentIndex + 1) % 3;
+    currentIndex = (currentIndex + 1) % 2;
     updateCarousel();
   }
 
   function prevSlide() {
-    currentIndex = (currentIndex - 1 + 3) % 3;
+    currentIndex = (currentIndex - 1 + 2) % 2;
     updateCarousel();
   }
 
