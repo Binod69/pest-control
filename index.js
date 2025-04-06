@@ -1,6 +1,12 @@
 "use strict";
 
+const { default: EMAIL_JS_KEY } = require("./apiKeys");
+
 document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+
+(function () {
+  emailjs.init(EMAIL_JS_KEY.publicKey);
+})();
 
 document.addEventListener("DOMContentLoaded", function () {
   // const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -416,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Send email using EmailJS
     emailjs
-      .send("service_12hdh1y", "template_1g199kd", formData)
+      .send(EMAIL_JS_KEY.serviceId, EMAIL_JS_KEY.templateId, formData)
       .then(function () {
         // Show success message
         showToast("Your message has been sent successfully!");
