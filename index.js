@@ -1,14 +1,26 @@
 "use strict";
 
-const { default: EMAIL_JS_KEY } = require("./apiKeys");
-
 document.getElementById("currentYear").innerHTML = new Date().getFullYear();
 
-(function () {
-  emailjs.init(EMAIL_JS_KEY.publicKey);
-})();
+// (function () {
+//   emailjs.init(apiKeys.publicKey);
+// })();
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  });
+
   // const mobileMenuButton = document.getElementById("mobile-menu-button");
   // const closeMenuButton = document.getElementById("close-menu");
   // const mobileMenu = document.getElementById("mobile-menu");
@@ -27,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // closeMenuButton.addEventListener("click", toggleMobileMenu);
   // mobileMenuOverlay.addEventListener("click", toggleMobileMenu);
 
-  // // Close menu when clicking on a link
+  // Close menu when clicking on a link
   // mobileMenuLinks.forEach((link) => {
   //   link.addEventListener("click", () => {
   //     mobileMenu.classList.remove("active");
@@ -82,6 +94,67 @@ document.addEventListener("DOMContentLoaded", function () {
       closeMobileMenu();
     });
   });
+
+  // const mobileMenuButton = document.getElementById("mobile-menu-button");
+  // const mobileMenu = document.getElementById("mobile-menu");
+  // const hamburgerIcon = document.getElementById("hamburger-icon");
+  // const closeIcon = document.getElementById("close-icon");
+
+  // mobileMenuButton.addEventListener("click", () => {
+  //   const isHidden = mobileMenu.classList.contains("hidden");
+
+  //   if (isHidden) {
+  //     mobileMenu.classList.remove("hidden");
+  //     mobileMenu.classList.add("animate-slide-down");
+  //     hamburgerIcon.classList.add("hidden");
+  //     closeIcon.classList.remove("hidden");
+  //   } else {
+  //     mobileMenu.classList.add("hidden");
+  //     mobileMenu.classList.remove("animate-slide-down");
+  //     hamburgerIcon.classList.remove("hidden");
+  //     closeIcon.classList.add("hidden");
+  //   }
+  // });
+
+  // Close mobile menu when clicking on a link
+  // const mobileLinks = mobileMenu.querySelectorAll("a");
+  // mobileLinks.forEach((link) => {
+  //   link.addEventListener("click", () => {
+  //     mobileMenu.classList.add("hidden");
+  //     mobileMenu.classList.remove("animate-slide-down");
+  //     hamburgerIcon.classList.remove("hidden");
+  //     closeIcon.classList.add("hidden");
+  //   });
+  // });
+
+  // Smooth scrolling for anchor links
+  // document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  //   anchor.addEventListener("click", function (e) {
+  //     e.preventDefault();
+  //     const target = document.querySelector(this.getAttribute("href"));
+  //     if (target) {
+  //       target.scrollIntoView({
+  //         behavior: "smooth",
+  //         block: "start",
+  //       });
+  //     }
+  //   });
+  // });
+
+  // Add scroll effect to navbar
+  // let lastScrollY = window.scrollY;
+  // window.addEventListener("scroll", () => {
+  //   const navbar = document.querySelector("nav");
+  //   const currentScrollY = window.scrollY;
+
+  //   if (currentScrollY > 100) {
+  //     navbar.classList.add("backdrop-blur-sm", "bg-white/95");
+  //   } else {
+  //     navbar.classList.remove("backdrop-blur-sm", "bg-white/95");
+  //   }
+
+  //   lastScrollY = currentScrollY;
+  // });
 
   // Testimonials Carousel Code
   const testimonialsContainer = document.getElementById(
@@ -422,7 +495,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Send email using EmailJS
     emailjs
-      .send(EMAIL_JS_KEY.serviceId, EMAIL_JS_KEY.templateId, formData)
+      .send("service_12hdh1y", "template_1g199kd", formData)
       .then(function () {
         // Show success message
         showToast("Your message has been sent successfully!");

@@ -1,3 +1,4 @@
 .env
 node_modules
 apiKeys.js
+.DS_STORE

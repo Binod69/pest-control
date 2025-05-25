@@ -6,6 +6,7 @@
     <title>
       Fly Away Pest Control Qld - Professional Pest Control Services
     </title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -141,13 +142,13 @@
     <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
     <!-- Header/Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+   <header class="bg-white shadow-md sticky top-0 z-50">
       <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
           <!-- Logo -->
           <a
             href="#"
-            class="text-2xl font-bold text-green-600 flex items-center space-x-3"
+            class="text-xl md:text-2xl font-bold text-green-600 flex items-center space-x-3"
           >
             <img
               src="./images/logo-1.png"
@@ -202,9 +203,16 @@
 
         <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="md:hidden">
-          <div class="flex justify-between items-center mb-8">
-            <a href="#" class="text-xl font-bold text-green-600"
-              >Fly Away Pest Control Qld</a
+          <div class="flex flex-col-2 justify-between items-center flex-row mb-8">
+            <a href="#" class="text-xl flex justify-between items-center font-bold text-green-600"
+              >
+               <img
+              src="./images/logo-1.png"
+              alt="fly away pest control"
+              class="h-12 w-auto"
+            />
+          Fly Away Pest Control Qld
+             </a
             >
             <button id="close-menu" class="text-gray-700">
               <i class="fas fa-times text-2xl"></i>
@@ -246,6 +254,7 @@
         </div>
       </div>
     </header>
+
 
     <!-- Hero Section -->
     <section
@@ -2232,14 +2241,18 @@
           <div>
             <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
             <ul class="space-y-2 text-gray-400">
+              
               <li class="flex items-center">
                 <i class="fas fa-phone-alt mr-2"></i>
-                <span>0469 114 477</span>
+                <a href="tel:0469 114 477">0469 114 477</a>
               </li>
+      
+             
               <li class="flex items-center">
                 <i class="fas fa-envelope mr-2"></i>
-                <span>flyawaypestcontrol@gmail.com</span>
+                <a href="mailto:info@flyawaypest.com.au">info@flyawaypest.com.au</a>
               </li>
+                
               <li class="flex items-center">
                 <i class="fas fa-map-marker-alt mr-2"></i>
                 <span
@@ -2282,13 +2295,12 @@
     <!-- Add EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-    <!-- <script>
-      (function () {
-       
-        emailjs.init("AGqW8wIcF9vAs38DX");
-      })();
-    </script> -->
+ <script>
+  (function () {
+   emailjs.init('AGqW8wIcF9vAs38DX');
+ })();
+ </script>
 
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js" defer></script>
   </body>
 </html>
